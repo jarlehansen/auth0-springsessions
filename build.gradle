@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'auth0-springsessions'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.projectlombok:lombok:1.16.6')
+	compile('com.auth0:auth0-spring-mvc:0.1.0')
+	compile('com.auth0:auth0-spring-security-mvc:0.1.0')
+
+
+	compile('org.springframework.boot:spring-boot-devtools')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-redis')
+	compile('org.springframework.session:spring-session:1.2.1.RELEASE')
+	compile('com.github.kstyrc:embedded-redis:0.6')
+}
+

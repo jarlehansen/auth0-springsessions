@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
+    <style>
+        .auth0-lock-close-button {
+            display: none;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.5/jquery.jgrowl.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        $(function () {
+            var error = /*[[${error}]]*/ '';
+        });
+        $(function () {
+            var clientId = /*[[${clientId}]]*/ '';
+            var domain = /*[[${domain}]]*/ '';
+            var loginCallback = /*[[${loginCallback}]]*/ '';
+            var state = /*[[${state}]]*/ '';
+
+            var lock = new Auth0Lock(clientId, domain, {
+                allowSignUp: false,
+                theme: {
+                    primaryColor: '#02a0bf'
+                },
+                languageDictionary: {
+                    emailInputPlaceholder: "john.doe@auth0.com",
+                    title: "Auth0 Example"
+                },
+                auth: {
+                    redirectUrl: 'http://localhost:8080' + loginCallback,
+                    responseType: 'code',
+                    params: {
+                        state: state,
+                        // Learn about scopes: https://auth0.com/docs/scopes
+                        scope: 'openid user_id name nickname email picture'
+                    }
+                }
+            });
+            setTimeout(function () {
+                lock.show();
+            }, 1500);
+        });
+        /*]]>*/
+    </script>
+</div>
+</body>
+</html>

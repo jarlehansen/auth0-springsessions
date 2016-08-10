@@ -1,0 +1,8 @@
+security:
+ basic:
+  enabled: false
+
+spring:
+ redis:
+  host: localhost
+  port: 6379
