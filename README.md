@@ -1,10 +1,6 @@
 # Auth0 Spring Session
 
-See details in stack overflow: http://stackoverflow.com/questions/38844652/spring-session-with-auth0-session-is-empty
-
-An example project showing the issue with using Spring Session (with local embedded Redis) and Auth0.
-The problem is that when using Spring Session we do not receive the tokens and the auth0User in the session.
-If the `@EnableRedisHttpSession` is removed, this information (tokens & auth0User) works as intended.
+An example project showing the use of Spring Session (with local embedded Redis) and Auth0.
 
 ## Usage
 
